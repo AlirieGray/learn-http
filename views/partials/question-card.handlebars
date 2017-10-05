@@ -2,3 +2,9 @@
   <p> What does this status code represent? </p>
   <p> {{code}} </p>
 </div>
+
+<div class="answers">
+  {{#each choices}}
+    <button class="btn"> {{this.def}} </button>
+  {{/each}}
+</div>

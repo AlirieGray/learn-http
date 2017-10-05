@@ -22,8 +22,16 @@ app.get('/', function(req, res) {
   var codeObj = statusCodes[index];
   // randomly pick four answers to display as multiple choice
   // make sure it includes the correct answer
-  
-  res.render('home', {code: codeObj.code});
+  var answers = [];
+  while(answers.length < 4) {
+    var index = Math.floor(Math.random() * statusCodes.length);
+    var nextChoice = statusCodes[index];
+    if (!answers.includes(nextChoice)) {
+      answers.push(nextChoice);
+      console.log(nextChoice);
+    }
+  }
+  res.render('home', {code: codeObj.code, choices: answers});
 })
 
 app.listen(3000, function(req, res) {
