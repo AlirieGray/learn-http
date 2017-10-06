@@ -3,22 +3,12 @@ const express = require('express');
 const app = express();
 const hb = require('express-handlebars');
 const bodyParser = require('body-parser');
+// an array that holds the http status codes as JSON objects
+const statusCodes = require("./statusCodes.json");
 
 //**** middleware ****//
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// an object that holds the http status codes
-const statusCodes = [
-  {code: 100, def: "Continue"},
-  {code: 200, def: "OK"},
-  {code: 403, def: "Forbidden"},
-  {code: 404, def: "Not Found"},
-  {code: 401, def: "Unauthorized"},
-  {code: 423, def: "Locked"},
-  {code: 500, def: "Internal Server Error"},
-  {code: 504, def: "Gateway Timeout"},
-  {code: 511, def: "Network Authentication Required"}
-];
 
 app.engine('handlebars', hb({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');

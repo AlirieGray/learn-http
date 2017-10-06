@@ -1,0 +1,14 @@
+[
+  {"code": 100, "def": "Continue"},
+  {"code": 200, "def": "OK"},
+  {"code": 201, "def": "Created"},
+  {"code": 202, "def": "Accepted"},
+  {"code": 301, "def": "Moved Permanently"},
+  {"code": 307, "def": "Temporary Redirect"},
+  {"code": 403, "def": "Forbidden"},
+  {"code": 404, "def": "Not Found"},
+  {"code": 401, "def": "Unauthorized"},
+  {"code": 423, "def": "Locked"},
+  {"code": 500, "def": "Internal Server Error"},
+  {"code": 504, "def": "Gateway Timeout"}
+]
