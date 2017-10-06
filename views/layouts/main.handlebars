@@ -18,6 +18,7 @@
 
   .answers {
     display: flex;
+    flex: 1;
     justify-content: space-around;
     width: 500px;
     margin: auto;
@@ -25,21 +26,38 @@
 
   .card {
     background-color: rgba(200, 200, 200, .9);
-    padding: 10px;
+    padding: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
     max-width: 500px;
-    margin: auto;
-    border-radius:
+    margin-bottom: 10px;
   }
 
   .btn {
     margin: 20px;
-    margin-left: 5px;
-    margin-right: 5px;
+    height: 40px;
+    width: 90px;
     background-color: #aae;
   }
 
   .q {
     font-size: 20px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 90vh;
+  }
+
+  .foot {
+    flex: 5;
+    margin-top: auto;
+    background-color: #aaa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
 </style>

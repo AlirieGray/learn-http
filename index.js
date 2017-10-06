@@ -3,15 +3,16 @@ const express = require('express');
 const app = express();
 const hb = require('express-handlebars');
 const bodyParser = require('body-parser');
-// an array that holds the http status codes as JSON objects
-const statusCodes = require("./statusCodes.json");
 
 //**** middleware ****//
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
+// set up handlebars
 app.engine('handlebars', hb({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+
+// an array that holds the http status codes as JSON objects
+const statusCodes = require("./statusCodes.json");
 
 // randomly select an HTTP status code object and return it
 var getCorrect = () => {
@@ -54,7 +55,7 @@ app.get('/', function(req, res) {
   var correct = getCorrect();
   var answers = getChoices(correct);
 
-  res.render('home', {correctCode: correct.code, choices: answers});
+  res.render('home', {correctCode: correct.code, correctDef: correct.def, choices: answers});
 });
 
 app.post('/', function(req, res) {
@@ -64,6 +65,7 @@ app.post('/', function(req, res) {
     answer = "Correct!"
   } else {
     answer = "Incorrect! The correct answer was: " + req.body.correctDef;
+    console.log(req.body.correctDef);
   }
   // then get new question and display it to the user
   var correct = getCorrect();

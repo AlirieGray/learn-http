@@ -1,14 +1,14 @@
 [
-  {"code": 100, "def": "Continue"},
-  {"code": 200, "def": "OK"},
-  {"code": 201, "def": "Created"},
-  {"code": 202, "def": "Accepted"},
-  {"code": 301, "def": "Moved Permanently"},
-  {"code": 307, "def": "Temporary Redirect"},
-  {"code": 403, "def": "Forbidden"},
-  {"code": 404, "def": "Not Found"},
-  {"code": 401, "def": "Unauthorized"},
-  {"code": 423, "def": "Locked"},
-  {"code": 500, "def": "Internal Server Error"},
-  {"code": 504, "def": "Gateway Timeout"}
+  {"code": 100, "def": "Continue", "detail": "This means that the server has received the request headers, and that the client should proceed to send the request body (in the case of a request for which a body needs to be sent; for example, a POST request). If the request body is large, sending it to a server when a request has already been rejected based upon inappropriate headers is inefficient. To have a server check if the request could be accepted based on the request's headers alone, a client must send Expect: 100-continue as a header in its initial request and check if a 100 Continue status code is received in response before continuing (or receive 417 Expectation Failed and not continue)."},
+  {"code": 200, "def": "OK", "detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."},
+  {"code": 201, "def": "Created", "detail": "The request has been fulfilled and resulted in a new resource being created."},
+  {"code": 202, "def": "Accepted", "detail": "The request has been accepted for processing, but the processing has not been completed. The request might or might not eventually be acted upon, as it might be disallowed when processing actually takes place."},
+  {"code": 301, "def": "Moved Permanently", "detail": "This and all future requests should be directed to the given URI."},
+  {"code": 307, "def": "Temporary Redirect", "detail": "In this case, the request should be repeated with another URI; however, future requests can still use the original URI. In contrast to 302, the request method should not be changed when reissuing the original request. For instance, a POST request must be repeated using another POST request."},
+  {"code": 403, "def": "Forbidden", "detail": "The request was a legal request, but the server is refusing to respond to it. Unlike a 401 Unauthorized response, authenticating will make no difference."},
+  {"code": 404, "def": "Not Found", "detail": "he requested resource could not be found but may be available again in the future. Subsequent requests by the client are permissible. Used when the requested resource is not found, whether it doesn't exist or if there was a 401 or 403 that, for security reasons, the service wants to mask."},
+  {"code": 401, "def": "Unauthorized", "detail": "Similar to 403 Forbidden, but specifically for use when authentication is possible but has failed or not yet been provided. The response must include a WWW-Authenticate header field containing a challenge applicable to the requested resource. See Basic access authentication and Digest access authentication."},
+  {"code": 423, "def": "Locked", "detail": "The resource that is being accessed is locked."},
+  {"code": 500, "def": "Internal Server Error", "detail": "The server encountered an unexpected condition which prevented it from fulfilling the request."},
+  {"code": 504, "def": "Gateway Timeout", "detail": "The server was acting as a gateway or proxy and did not receive a timely response from the upstream server."}
 ]
