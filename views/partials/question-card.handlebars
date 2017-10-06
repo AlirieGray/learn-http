@@ -1,6 +1,8 @@
+<p> {{isCorrect}} </p>
+
 <div class="card">
   <p> What does this status code represent? </p>
-  <p> {{correctCode}} </p>
+  <p class="q"> {{correctCode}} </p>
 </div>
 
 <div class="answers">
@@ -9,6 +11,7 @@
     <form method="post" action="/">
       <input type="hidden" name="userAnswer" value={{this.code}} />
       <input type="hidden" name="correctAnswer" value={{@root.correctCode}} />
+            <input type="hidden" name="correctDef" value={{@root.correctDef}} />
       <button class="btn" type="submit"> {{this.def}} </button>
     </form>
   {{/each}}
