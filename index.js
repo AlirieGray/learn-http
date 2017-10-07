@@ -1,11 +1,22 @@
+/* TODO: fix style
+ * TODO: user authentication **
+ * TODO: display detail property of statusCode obj
+ *   - on Hover? when correct answer displayed?
+*/
+
 //**** dependencies ****//
 const express = require('express');
 const app = express();
 const hb = require('express-handlebars');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 
 //**** middleware ****//
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // set up handlebars
 app.engine('handlebars', hb({defaultLayout: 'main'}));
@@ -55,23 +66,34 @@ app.get('/', function(req, res) {
   var correct = getCorrect();
   var answers = getChoices(correct);
 
-  res.render('home', {correctCode: correct.code, correctDef: correct.def, choices: answers});
+  res.render('home', {correctCode: correct.code, choices: answers});
 });
 
 app.post('/', function(req, res) {
   // check if answer is correct
-  var answer;
-  if (req.body.userAnswer == req.body.correctAnswer) {
-    answer = "Correct!"
+  var answerText;
+  var correctAnswer = req.body.correctAnswer;
+  if (req.body.userAnswer == correctAnswer) {
+    answerText = "Correct!"
   } else {
-    answer = "Incorrect! The correct answer was: " + req.body.correctDef;
-    console.log(req.body.correctDef);
+    var correctDef = statusCodes.filter(function (statusObj) {
+      if (statusObj.code == correctAnswer) {
+        return statusObj;
+      }
+    })
+    correctDef = correctDef[0].def;
+    answerText = "Incorrect! The correct answer was: " + correctDef;
   }
   // then get new question and display it to the user
   var correct = getCorrect();
   var answers = getChoices(correct);
-  res.render('home', {correctCode: correct.code, correctDef: correct.def, choices: answers, isCorrect: answer})
+  res.render('home', {correctCode: correct.code, choices: answers, isCorrect: answerText})
 });
+
+app.post('/login', function(req, res) {
+  console.log("attempting to login...");
+  res.redirect('/');
+})
 
 app.listen(3000, function(req, res) {
   console.log("listening on port 3000!");
