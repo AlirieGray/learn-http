@@ -13,10 +13,38 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 //**** middleware ****//
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+
+// user database model
+var User = require('./user-model');
+
+// check that a user is logged in
+var checkAuth = function (req, res, next) {
+  console.log("Checking authentication");
+  // make sure the user has a JWT cookie
+  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
+    req.user = null;
+    console.log("no user");
+  } else {
+    // if the user has a JWT cookie, decode it and set the user
+    var token = req.cookies.nToken;
+    var decodedToken = jwt.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload;
+    console.log(req.user);
+  }
+  // console.log(req.user);
+  next();
+}
+app.use(checkAuth);
+
+/***** set up mongoose *****/
+mongoose.promise = global.promise;
+mongoose.connect('mongodb://localhost/learn');
 
 // set up handlebars
 app.engine('handlebars', hb({defaultLayout: 'main'}));
@@ -66,7 +94,11 @@ app.get('/', function(req, res) {
   var correct = getCorrect();
   var answers = getChoices(correct);
 
-  res.render('home', {correctCode: correct.code, choices: answers});
+  res.render('home', {correctCode: correct.code, choices: answers, currentUser: req.user});
+});
+
+app.get('/sign-up', function(req, res) {
+  res.render('sign-up');
 });
 
 app.post('/', function(req, res) {
@@ -90,10 +122,8 @@ app.post('/', function(req, res) {
   res.render('home', {correctCode: correct.code, choices: answers, isCorrect: answerText})
 });
 
-app.post('/login', function(req, res) {
-  console.log("attempting to login...");
-  res.redirect('/');
-})
+// authentication controller
+require('./auth.js')(app);
 
 app.listen(3000, function(req, res) {
   console.log("listening on port 3000!");

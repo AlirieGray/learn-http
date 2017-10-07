@@ -1,5 +1,12 @@
-<form class="login" method="post" action="/login">
-  <input type="text" placeholder="username" />
-  <input type="password" placeholder="password" />
-  <button type="submit"> Login </button>
-</form>
+{{#if currentUser}}
+<div class="login">
+  <button onclick="location.href = '/logout'; return false;"> Logout</button>
+</div>
+{{else}}
+  <form class="login" method="post" action="/login">
+    <input type="text" placeholder="username" />
+    <input type="password" placeholder="password" />
+    <button type="submit"> Login </button>
+    <button onclick="location.href = '/sign-up'; return false;"> Sign Up </button>
+  </form>
+{{/if}}
