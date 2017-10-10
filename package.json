@@ -15,6 +15,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.1",
     "jsonwebtoken": "^8.0.1",
+    "materialize-css": "^0.100.2",
     "mongoose": "^4.12.0"
   }
 }

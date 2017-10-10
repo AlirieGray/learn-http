@@ -2,11 +2,10 @@
 
 <div class="card">
   <p> What does this status code represent? </p>
-  <p> {{correctCode}} </p>
+  <p class="theCode"> {{correctCode}} </p>
 </div>
 
-<div class="answers">
-
+<div class="container">
   {{#each choices}}
     <form method="post" action="/">
       <input type="hidden" name="userAnswer" value={{this.code}} />

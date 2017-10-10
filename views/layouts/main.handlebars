@@ -3,87 +3,42 @@
 <head>
   <meta charset="utf-8">
   <link rel=icon href="/favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
   <style>
-  body {
-    font-family: Arial, sans-serif;
-  }
-  p {
-    text-align: center;
-  }
+    .card p {
+      text-align: center;
+    }
+    .theCode {
+      font-size: 20px;
+    }
+    .card {
+      padding-top: 20px !important;
+      padding-bottom: 20px !important;
+      margin-bottom: 30px !important;
+    }
+    .page-footer {
+      background-color: #1DE9B6 !important;
+      margin-top: 60px;
+    }
+    .page-footer p {
+      text-align: center;
+    }
+    .container form {
+      display: inline !important;
+    }
+    body {
+      display: flex !important;
+      min-height: 100vh !important;
+      flex-direction: column !important;
+    }
+    main {
+      flex: 1 0 auto !important;
+    }
 
-  h1 {
-    text-align: center;
-    letter-spacing: 2px;
-  }
-
-  .answers {
-    display: flex;
-    flex: 1;
-    justify-content: space-around;
-    width: 500px;
-    margin: auto;
-  }
-
-  .card {
-    background-color: rgba(200, 200, 200, .9);
-    padding: 30px;
-    padding-left: 50px;
-    padding-right: 50px;
-    max-width: 500px;
-    margin-bottom: 10px;
-  }
-
-  .btn {
-    margin: 20px;
-    height: 40px;
-    width: 90px;
-    background-color: #aae;
-  }
-
-  .q {
-    font-size: 20px;
-  }
-
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 80vh;
-  }
-
-  .foot {
-    flex: 5;
-    margin-top: auto;
-    background-color: #aaa;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .login {
-    display: flex;
-    padding: 10px;
-    flex-direction: row;
-    justify-content: flex-end;
-  }
-
-  .login input {
-    margin-right: 10px;
-  }
-
-  .login button {
-    margin-right: 10px;
-  }
-
-  .signup {
-    display: flex;
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    background-color: red;
-  }
-
-</style>
+  </style>
   <Title> Learn HTTP Status Codes! </Title>
 </head>
 <body>
