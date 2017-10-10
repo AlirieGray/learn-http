@@ -19,6 +19,7 @@ require('dotenv').config();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
+app.use(express.static('public'));
 
 // user database model
 var User = require('./user-model');

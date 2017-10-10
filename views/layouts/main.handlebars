@@ -6,7 +6,13 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="js/materialize.min.js"></script>
+  <script type="text/javascript" src="/js/materialize.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    // console.log($('.modal'));
+    $('.modal').modal();
+  });
+  </script>
   <style>
     .card p {
       text-align: center;
@@ -36,6 +42,23 @@
     }
     main {
       flex: 1 0 auto !important;
+    }
+    .login {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+    }
+    .login input {
+      margin-right: 10px;
+      max-width: 100px;
+    }
+    .login button {
+      margin-bottom: 7px;
+    }
+    h1 {
+      text-align: center;
+      letter-spacing: 3px;
     }
 
   </style>
