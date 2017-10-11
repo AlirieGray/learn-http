@@ -16,7 +16,7 @@
   <style>
     .card p {
       text-align: center;
-      font-size: 18px; 
+      font-size: 18px;
     }
     .theCode {
       font-size: 25px !important;
@@ -66,6 +66,14 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
+    }
+    @media only screen and (max-width: 700px) {
+      .answers {
+        flex-direction: column !important;
+      }
+      .answers form {
+        margin: 10px;
+      }
     }
 
   </style>
