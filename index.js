@@ -102,12 +102,32 @@ app.get('/sign-up', function(req, res) {
   res.render('sign-up');
 });
 
+app.get('/profile', function(req, res) {
+  if (req.user) {
+    var points = req.user.points;
+    console.log("pts " + points);
+    console.log(req.user.username);
+    res.render('profile', {points: points});
+  } else {
+    res.redirect('/');
+  }
+
+})
+
 app.post('/', function(req, res) {
   // check if answer is correct
   var answerText;
   var correctAnswer = req.body.correctAnswer;
   if (req.body.userAnswer == correctAnswer) {
     answerText = "Correct!"
+    if (req.user) {
+      User.findById(req.user.id).exec().then(function(user) {
+        user.points += 1;
+        user.markModified('points');
+        user.save();
+        console.log(user.points);
+      });
+    }
   } else {
     var correctDef = statusCodes.filter(function (statusObj) {
       if (statusObj.code == correctAnswer) {
