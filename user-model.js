@@ -7,6 +7,7 @@ var UserSchema = new Schema({
   , updatedAt       : { type: Date }
   , password        : { type: String, select: false }
   , username        : { type: String, required: true }
+  , points          : { type: Number, default: 0}
 });
 
 UserSchema.pre('save', function(next){
@@ -24,7 +25,6 @@ UserSchema.pre('save', function(next){
   }
   bcrypt.genSalt(10, function(err, salt) {
     bcrypt.hash(user.password, salt, function(err, hash) {
-
       user.password = hash;
       next();
     });
