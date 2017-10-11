@@ -5,7 +5,7 @@
   <p class="theCode"> {{correctCode}} </p>
 </div>
 
-<div class="container">
+<div class="answers">
   {{#each choices}}
     <form method="post" action="/">
       <input type="hidden" name="userAnswer" value={{this.code}} />

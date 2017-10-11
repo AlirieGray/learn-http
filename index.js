@@ -1,4 +1,4 @@
-/* TODO: fix style
+/* TODO: fix answer button alignment
  * TODO: user authentication **
  * TODO: display detail property of statusCode obj
  *   - on Hover? when correct answer displayed?
