@@ -52,6 +52,7 @@ app.set('view engine', 'handlebars');
 
 // an array that holds the http status codes as JSON objects
 const statusCodes = require("./statusCodes.json");
+const statusCodesByCategory = require("./codeCategories.json")
 
 // randomly select an HTTP status code object and return it
 var getCorrect = () => {
