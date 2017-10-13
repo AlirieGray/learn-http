@@ -1,4 +1,5 @@
-/* TODO: user authentication **
+/* TODO: user profiles
+ * TODO: randomize array of questions 
  * TODO: display detail property of statusCode obj
  *   - on Hover? when correct answer displayed?
 */
