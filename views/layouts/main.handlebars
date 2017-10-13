@@ -8,7 +8,7 @@
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script type="text/javascript" src="/js/materialize.min.js"></script>
   <script>
-  $(document).ready(function(){
+  $(function(){
     // console.log($('.modal'));
     $('.modal').modal();
   });
@@ -41,6 +41,7 @@
       display: flex !important;
       min-height: 100vh !important;
       flex-direction: column !important;
+      height: 100%;
     }
     main {
       flex: 1 0 auto !important;
@@ -71,12 +72,19 @@
       align-items: center;
       justify-content: space-between;
     }
+    .answers > form {
+      margin: 0 5px;
+    }
+    .answers > form:first-child { margin-left: 0; }
+
+    .answers > form:last-child { margin-right: 0; }
+
     @media only screen and (max-width: 780px) {
       .answers {
         flex-direction: column !important;
       }
       .answers form {
-        margin: 10px;
+        margin: 10px !important;
       }
       .answers form button {
         width: 200px;
