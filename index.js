@@ -1,5 +1,5 @@
 /* TODO: user profiles
- * TODO: randomize array of questions 
+ * TODO: randomize array of questions
  * TODO: display detail property of statusCode obj
  *   - on Hover? when correct answer displayed?
 */
@@ -37,13 +37,13 @@ var checkAuth = function (req, res, next) {
   // make sure the user has a JWT cookie
   if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
     req.user = null;
-    console.log("no user");
+    //console.log("no user");
   } else {
     // if the user has a JWT cookie, decode it and set the user
     var token = req.cookies.nToken;
     var decodedToken = jwt.decode(token, { complete: true }) || {};
     req.user = decodedToken.payload;
-    console.log(req.user);
+    //console.log(req.user);
   }
   // console.log(req.user);
   next();
@@ -62,23 +62,28 @@ app.set('view engine', 'handlebars');
 const statusCodes = require("./statusCodes.json");
 const statusCodesByCategory = require("./codeCategories.json")
 
-// randomly select an HTTP status code object and return it
-var getCorrect = () => {
-  var index = Math.floor(Math.random() * statusCodes.length);
-  return statusCodes[index];
-}
-
 var shuffle = (arr) => {
-  // go through each element
+  // make a shallow copy
+  var newArr = [...arr]
   for (var i = arr.length - 1; i > 0; i--) {
     // get a random index in the range
     var j = Math.floor(Math.random() * (i + 1));
     // swap the element at that index with the current element
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+    var temp = newArr[i];
+    newArr[i] = newArr[j];
+    newArr[j] = temp;
   }
-  return arr;
+  return newArr;
+}
+
+var shuffledStatusCodes = shuffle(statusCodes);
+
+// pop a status code off the shuffled list and return it
+var getCorrect = () => {
+  if (shuffledStatusCodes.length == 0) {
+    shuffledStatusCodes = shuffle(statusCodes);
+  }
+  return shuffledStatusCodes.pop();
 }
 
 // returns an array of four HTTP status code objects that
@@ -95,6 +100,7 @@ var getChoices = (correct) => {
       answers.push(nextChoice);
     }
   }
+  // shuffle the multiple choice answer buttons that appear to the user
   return shuffle(answers);
 }
 
