@@ -4,13 +4,6 @@
  *   - on Hover? when correct answer displayed?
 */
 
-
-/*
-  Randomize the array of questions, pop a question off the top until the array
-  is empty then refill the array with new randomized list of the questions.
-  This way the questions would not repeat.
-*/
-
 //**** dependencies ****//
 const express = require('express');
 const app = express();
