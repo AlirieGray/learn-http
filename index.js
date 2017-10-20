@@ -1,5 +1,4 @@
 /* TODO: user profiles
- * TODO: randomize array of questions
  * TODO: display detail property of statusCode obj
  *   - on Hover? when correct answer displayed?
 */
@@ -26,7 +25,7 @@ var User = require('./user-model');
 
 // check that a user is logged in
 var checkAuth = function (req, res, next) {
-  console.log("Checking authentication");
+  //console.log("Checking authentication");
   // make sure the user has a JWT cookie
   if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
     req.user = null;
@@ -111,14 +110,14 @@ app.get('/sign-up', function(req, res) {
 
 app.get('/profile', function(req, res) {
   if (req.user) {
-    var points = req.user.points;
-    console.log("pts " + points);
-    console.log(req.user.username);
-    res.render('profile', {points: points});
+    User.findById(req.user.id).exec().then((user) => {
+      var points = user.points;
+      console.log("pts " + points);
+      res.render('profile', {points: points, currentUser: req.user});
+    })
   } else {
     res.redirect('/');
   }
-
 })
 
 app.post('/', function(req, res) {
@@ -147,7 +146,7 @@ app.post('/', function(req, res) {
   // then get new question and display it to the user
   var correct = getCorrect();
   var answers = getChoices(correct);
-  res.render('home', {correctCode: correct.code, choices: answers, isCorrect: answerText})
+  res.render('home', {correctCode: correct.code, choices: answers, isCorrect: answerText, currentUser: req.user})
 });
 
 // authentication controller
