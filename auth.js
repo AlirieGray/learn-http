@@ -29,6 +29,10 @@ module.exports = function(app) {
     res.redirect('/')
   })
 
+  app.get('/sign-up', function(req, res) {
+    res.redirect('/')
+  })
+
   // sign-up
   app.post('/sign-up', function(req, res, next) {
     // create User and JWT

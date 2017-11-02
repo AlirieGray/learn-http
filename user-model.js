@@ -7,12 +7,15 @@ var UserSchema = new Schema({
   , updatedAt       : { type: Date }
   , password        : { type: String, select: false }
   , username        : { type: String, required: true }
-  , points          : { type: Number, default: 0}
+  , points          : { type: Number}
 });
 
 UserSchema.pre('save', function(next){
   // SET createdAt AND updatedAt
   var now = new Date();
+  if ( !this.points ) {
+    this.points = 0;
+  }
   this.updatedAt = now;
   if ( !this.createdAt ) {
     this.createdAt = now;
