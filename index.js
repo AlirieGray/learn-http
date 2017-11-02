@@ -112,7 +112,6 @@ app.get('/profile', function(req, res) {
   if (req.user) {
     User.findById(req.user.id).exec().then((user) => {
       var points = user.points;
-      console.log("pts " + points);
       res.render('profile', {points: points, currentUser: req.user});
     })
   } else {
