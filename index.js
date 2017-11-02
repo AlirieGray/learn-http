@@ -153,6 +153,8 @@ app.post('/', function(req, res) {
 // authentication controller
 require('./auth.js')(app);
 
-app.listen(3000, function(req, res) {
-  console.log("listening on port 3000!");
+var port = process.env.port || 3000;
+
+app.listen(port, function(req, res) {
+  console.log("listening!");
 });
