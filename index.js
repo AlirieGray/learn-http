@@ -46,6 +46,7 @@ app.use(checkAuth);
 mongoose.promise = global.promise;
 mongoose.connect('mongodb://heroku_7b5528r5:5i5sjiqq5d2auug32ingk3jeac@ds143245.mlab.com:43245/heroku_7b5528r5');
 var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
 
 // set up handlebars
 app.engine('handlebars', hb({defaultLayout: 'main'}));
