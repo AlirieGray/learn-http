@@ -14,7 +14,7 @@ Clone the repo and run:
   node index.js
   ```
   
-This will run the project on node server on port 3000.
+This will run the project on a node server on port 3000.
 
 ## TODO
 - Styling for user profiles
