@@ -23,3 +23,6 @@ This will run the project on node server on port 3000.
 - Display detailed description of the status codes to the user
 - Add a mode in which all of the multiple choices are in the same hundreds range
 - Combine with [Make it Permanent](http://makeitpermanent.net/) to form one super-site of skill-building
+
+## Example Question
+![Flashcard](100.png)
