@@ -3,7 +3,7 @@
 A flashcard website to help web developer students memorize the most commonly used HTTP status codes. The user is shown an HTTP status code (e.g., 404, 200, etc.) and given four options to select the correct corresponding meaning from. If the user is logged in, every correct answer will be stored on their account as a point. View the project [here](https://learn-http.herokuapp.com/)!
 
 ## Built With
-This project was built with Node, Express, and Handlebars. I used [Materialize](http://materializecss.com/) for the styling.
+This project was built with Node, Express, and Handlebars. I used [Materialize](http://materializecss.com/) for the styling. User accounts are stored on mLab's MongoDB cloud hosting, using Mongoose to connect. 
 
 ## Development
 Clone the repo and run: 
