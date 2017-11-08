@@ -10,7 +10,7 @@ module.exports = function(app) {
       if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
       user.comparePassword(req.body.password, function (err, isMatch) {
         if (!isMatch) {
-          return res.status(401).send({ message: 'Wrong password or password' });
+          return res.status(401).send({ message: 'Wrong username or password' });
         }
         var token = jwt.sign({ id: user.id }, process.env.SECRET, { expiresIn: "60 days" });
         res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
